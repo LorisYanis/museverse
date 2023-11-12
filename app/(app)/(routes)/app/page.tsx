@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import ChatCard from "../../_components/chatCard";
+import ChatCard from "../../_components/chat-card";
 
 const CATEGORIES = [
   "All",
