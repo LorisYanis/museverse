@@ -19,7 +19,7 @@ export const Header = ({ isLanding }: HeaderProps) => {
         <p className="font-bold">museverse.ai</p>
       </div>
       <div className="flex flex-row gap-2">
-        {userId ? (
+        {isLanding && userId ? (
           <Button variant="ghost" asChild>
             <Link href="/app">Go to app</Link>
           </Button>
