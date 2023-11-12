@@ -4,6 +4,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 interface HeaderProps {
   isLanding?: boolean;
@@ -13,11 +14,16 @@ export const Header = ({ isLanding }: HeaderProps) => {
   const { userId } = auth();
 
   return (
-    <header className="flex flex-row justify-between items-center">
-      <div className="flex flex-row gap-2">
+    <header
+      className={cn(
+        "flex flex-row justify-between items-center px-10 py-6",
+        !isLanding ? "border-b border-b-zinc-800" : "",
+      )}
+    >
+      <Link href="/" className="flex flex-row gap-2">
         <Image src="/logo.svg" height="24" width="24" alt="logo" />
-        <p className="font-bold">museverse.ai</p>
-      </div>
+        <span className="font-bold">museverse.ai</span>
+      </Link>
       <div className="flex flex-row gap-2">
         {userId ? (
           <Button variant="ghost" asChild>
