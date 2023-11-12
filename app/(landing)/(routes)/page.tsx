@@ -1,13 +1,7 @@
-import { SignInButton, auth } from "@clerk/nextjs";
-import { ArrowUpRight } from "lucide-react";
-
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { SignIn } from "@/components/sign-in";
 import { FakeChat } from "../_components/fake-chat";
 
-export default function Home() {
-  const { userId } = auth();
-
+export default async function Home() {
   return (
     <div className="flex-1 flex flex-col gap-10 items-center justify-center">
       <div className="flex flex-col gap-5 items-center justify-center">
@@ -20,19 +14,11 @@ export default function Home() {
           </p>
         </div>
         <div>
-          {userId ? (
-            <Button asChild>
-              <Link href="/app">
-                Unleash Creativity <ArrowUpRight className="ml-1 w-5 h-5" />
-              </Link>
-            </Button>
-          ) : (
-            <SignInButton mode="modal" afterSignInUrl="/app">
-              <Button>
-                Unleash Creativity <ArrowUpRight className="ml-1 w-5 h-5" />
-              </Button>
-            </SignInButton>
-          )}
+          <SignIn
+            authenticatedText="Unleash Creativity"
+            unauthenticatedText="Unleash Creativity"
+            icon={true}
+          />
         </div>
       </div>
       <FakeChat />

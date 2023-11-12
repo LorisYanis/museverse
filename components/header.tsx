@@ -1,18 +1,15 @@
-import Image from "next/image";
-import { SignInButton, UserButton, auth } from "@clerk/nextjs";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
-
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
+import { UserButton } from "@clerk/nextjs";
+
 import { cn } from "@/lib/utils";
+import { SignIn } from "@/components/sign-in";
 
 interface HeaderProps {
   isLanding?: boolean;
 }
 
 export const Header = ({ isLanding }: HeaderProps) => {
-  const { userId } = auth();
-
   return (
     <header
       className={cn(
@@ -25,15 +22,11 @@ export const Header = ({ isLanding }: HeaderProps) => {
         <span className="font-bold">museverse.ai</span>
       </Link>
       <div className="flex flex-row gap-2">
-        {isLanding && userId ? (
-          <Button variant="ghost" asChild>
-            <Link href="/app">Go to app</Link>
-          </Button>
-        ) : (
-          <SignInButton mode="modal" afterSignInUrl="/app">
-            <Button variant="ghost">Get museverse.ai Free</Button>
-          </SignInButton>
-        )}
+        <SignIn
+          authenticatedText="Go to app"
+          unauthenticatedText="Get museverse.ai Free"
+          variant="ghost"
+        />
         <UserButton afterSignOutUrl="/" />
       </div>
     </header>
