@@ -37,7 +37,7 @@ export default function Home() {
       </div>
       <FakeChat />
       <div>
-        <div className="-z-10 translate-x-1/2 bg-gradient-to-t from-zinc-200 via-zinc-600 to-zinc-900 right-1/2 fixed bottom-0 translate-y-1/2 h-[1000px] w-[1000px] blur-[200px] rounded-full glow-animate" />
+        <div className="-z-50 translate-x-1/2 bg-gradient-to-t from-zinc-200 via-zinc-600 to-zinc-900 right-1/2 fixed bottom-0 translate-y-1/2 h-[1000px] w-[1000px] blur-[200px] rounded-full glow-animate" />
       </div>
     </div>
   );
