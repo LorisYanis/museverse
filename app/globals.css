@@ -83,22 +83,52 @@ body,
   .background-animate {
     background-size: 400%;
 
-    -webkit-animation: AnimationName 3s ease infinite;
-    -moz-animation: AnimationName 3s ease infinite;
-    animation: AnimationName 3s ease infinite;
+    -webkit-animation: TextAnimation 3s ease infinite;
+    -moz-animation: TextAnimation 3s ease infinite;
+    animation: TextAnimation 3s ease infinite;
   }
 
   .opacity-mask {
     mask-image: linear-gradient(180deg, rgba(0, 0, 0, 1), transparent 100%);
   }
 
-  @keyframes AnimationName {
+  .fake-chat-animate {
+    -webkit-animation: slideInFromBottom 3s ease;
+    -moz-animation: slideInFromBottom 3s ease;
+    animation: slideInFromBottom 3s ease;
+  }
+
+  .glow-animate {
+    -webkit-animation: opacityFromZeroToOne 3s ease;
+    -moz-animation: opacityFromZeroToOne 3s ease;
+    animation: opacityFromZeroToOne 3s ease;
+  }
+
+  @keyframes TextAnimation {
     0%,
     100% {
       background-position: 0% 50%;
     }
     50% {
       background-position: 100% 50%;
+    }
+  }
+
+  @keyframes slideInFromBottom {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes opacityFromZeroToOne {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 100;
     }
   }
 }
