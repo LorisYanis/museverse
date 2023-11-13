@@ -21,8 +21,6 @@ export async function POST(req: Request) {
 
     const user = await currentUser();
 
-    console.log(user);
-
     if (!user || !user.id) {
       return new NextResponse("Unauthenticated", { status: 401 });
     }
