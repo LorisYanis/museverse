@@ -19,7 +19,7 @@ export const Header = ({ isLanding }: HeaderProps) => {
   return (
     <header
       className={cn(
-        "flex flex-row justify-between items-center p-6 md:px-10",
+        "flex flex-row justify-between items-center p-6 md:px-10 mb-10",
         !isLanding ? "border-b border-b-zinc-800" : "",
       )}
     >
