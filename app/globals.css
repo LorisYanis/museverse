@@ -132,3 +132,22 @@ body,
     }
   }
 }
+
+@layer components {
+  .scroll-bar {
+    @apply relative after:right-0 before:left-0;
+  }
+ .scroll-bar::after, .scroll-bar::before {
+    @apply absolute top-0 w-20 z-10 h-full;
+  }
+
+}
+
+@layer utilities{
+  .scroll-bar::before {
+    background: linear-gradient(-90deg, transparent 25%, rgba(24,24,27,1) 100%)
+  }
+  .scroll-bar::after {
+    background: linear-gradient(90deg, transparent 25%, rgba(24,24,27,1) 100%)
+  }
+}
