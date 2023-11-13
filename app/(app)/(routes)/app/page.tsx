@@ -1,18 +1,11 @@
-import { cn } from "@/lib/utils";
-import ChatCard from "../../_components/chat-card";
+import prismadb from "@/lib/prismadb";
 
-const CATEGORIES = [
-  "All",
-  "Innovators",
-  "Writers",
-  "Scientists",
-  "Musician",
-  "Painters",
-  "Philosophers",
-];
-const ACTIVE = "All";
+import { BotCard } from "../../_components/bot-card";
+import { CategoryPicker } from "../../_components/category-picker";
 
-const App = () => {
+const AppPage = async () => {
+  const categories = await prismadb.category.findMany();
+
   return (
     <div className="flex flex-1 flex-col items-center">
       <nav className="scroll-bar mt-16 mb-10 bg-zinc-900 p-1 rounded-lg max-md:w-full max-md:px-2 max-md:mt-10">
@@ -34,6 +27,22 @@ const App = () => {
       <section className="mb-36">
         <div className="container">
           <div className="flex flex-col items-center">
+            <CategoryPicker categories={categories} />
+            <div className="flex">
+              {/* <BotCard
+                bot={{
+                  id: "1",
+                  userId: "1",
+                  imageSource: "/images/thumbnail.png",
+                  name: "Steve Jobs",
+                  description: "Founder & Former CEO of Apple of Apple",
+                  preamble: "1",
+                  seedChat: "seedChat",
+                  createdAt: new Date(),
+                  updatedAt: new Date(),
+                  categoryId: "1",
+                }}
+              /> */}
             <div className="grid grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-md:gap-4 max-sm:grid-cols-1 gap-9">
               <ChatCard
                 image="/images/thumbnail.png"
@@ -91,4 +100,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default AppPage;

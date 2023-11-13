@@ -19,7 +19,7 @@ export const Header = ({ isLanding }: HeaderProps) => {
   return (
     <header
       className={cn(
-        "flex flex-row justify-between items-center p-6 md:px-10",
+        "flex flex-row justify-between items-center p-6 md:px-10 mb-10",
         !isLanding ? "border-b border-b-zinc-800" : "",
       )}
     >
@@ -27,7 +27,7 @@ export const Header = ({ isLanding }: HeaderProps) => {
         <Image src="/logo.svg" height="24" width="24" alt="logo" />
         <span className="hidden md:block font-bold">museverse.ai</span>
       </Link>
-      <div className="flex flex-row">
+      <div className="flex flex-row gap-x-2">
         <SignIn
           authenticatedText="Go to app"
           unauthenticatedText="Get museverse.ai Free"
