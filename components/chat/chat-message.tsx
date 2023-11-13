@@ -29,7 +29,7 @@ export const ChatMessage = ({
     >
       {role !== "user" && <BotAvatar src={src} />}
 
-      <div className="rounded-lg p-3 bg-primary-foreground border-[1px] border-muted max-w-lg text-sm">
+      <div className="rounded-lg p-3 bg-primary-foreground border-[1px] border-muted max-w-sm md:max-w-lg text-xs md:text-sm">
         {content}
       </div>
 

@@ -20,12 +20,13 @@ const App = () => {
           <div className="flex flex-col items-center">
             <nav className="mt-16 mb-10 bg-zinc-900 p-1 rounded-lg">
               <ul className="space-x-2 font-medium text-sm">
-                {CATEGORIES.map((category) => (
+                {CATEGORIES.map((category, index) => (
                   <li
                     className={cn(
                       "inline-block px-4 py-2 rounded-lg text-zinc-400 hover:bg-zinc-950 hover:text-white transition-colors",
                       category === ACTIVE ? "bg-zinc-950 text-white" : "",
                     )}
+                    key={index}
                   >
                     <button type="button">{category}</button>
                   </li>
