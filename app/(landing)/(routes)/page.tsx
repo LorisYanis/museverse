@@ -11,11 +11,9 @@ export default async function Home() {
           <h1 className="text-4xl md:text-6xl text-transparent bg-clip-text font-black bg-gradient-to-r from-zinc-500 via-zinc-300 to-white background-animate">
             museverse.ai
           </h1>
-          <Balancer>
-            <p className="md:text-lg text-zinc-300 mx-6">
-              We are creative beings, not productive machines
-            </p>
-          </Balancer>
+          <p className="md:text-lg text-zinc-300 mx-6">
+            <Balancer>We are creative beings, not productive machines</Balancer>
+          </p>
         </div>
         <div>
           <SignIn
