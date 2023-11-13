@@ -1,6 +1,7 @@
 import prismadb from "@/lib/prismadb";
-import ChatCard from "../../_components/chat-card";
-import CategoryPicker from "../../_components/category-picker";
+
+import { BotCard } from "../../_components/bot-card";
+import { CategoryPicker } from "../../_components/category-picker";
 
 const AppPage = async () => {
   const categories = await prismadb.category.findMany();
@@ -11,54 +12,20 @@ const AppPage = async () => {
         <div className="container">
           <div className="flex flex-col items-center">
             <CategoryPicker categories={categories} />
-            <div className="grid grid-cols-4 gap-9">
-              {/* <ChatCard
-                image="/images/thumbnail.png"
-                title="Steve Jobs"
-                description="Founder & Former CEO of Apple of Apple"
-                slug="steve_jobs"
-              />
-              <ChatCard
-                image="/images/thumbnail.png"
-                title="Steve Jobs"
-                description="Founder & Former CEO of Apple of Apple"
-                slug="steve_jobs"
-              />
-              <ChatCard
-                image="/images/thumbnail.png"
-                title="Steve Jobs"
-                description="Founder & Former CEO of Apple of Apple"
-                slug="steve_jobs"
-              />
-              <ChatCard
-                image="/images/thumbnail.png"
-                title="Steve Jobs"
-                description="Founder & Former CEO of Apple of Apple"
-                slug="steve_jobs"
-              />
-              <ChatCard
-                image="/images/thumbnail.png"
-                title="Steve Jobs"
-                description="Founder & Former CEO of Apple of Apple"
-                slug="steve_jobs"
-              />
-              <ChatCard
-                image="/images/thumbnail.png"
-                title="Steve Jobs"
-                description="Founder & Former CEO of Apple of Apple"
-                slug="steve_jobs"
-              />
-              <ChatCard
-                image="/images/thumbnail.png"
-                title="Steve Jobs"
-                description="Founder & Former CEO of Apple of Apple"
-                slug="steve_jobs"
-              />
-              <ChatCard
-                image="/images/thumbnail.png"
-                title="Steve Jobs"
-                description="Founder & Former CEO of Apple of Apple"
-                slug="steve_jobs"
+            <div className="flex">
+              {/* <BotCard
+                bot={{
+                  id: "1",
+                  userId: "1",
+                  imageSource: "/images/thumbnail.png",
+                  name: "Steve Jobs",
+                  description: "Founder & Former CEO of Apple of Apple",
+                  preamble: "1",
+                  seedChat: "seedChat",
+                  createdAt: new Date(),
+                  updatedAt: new Date(),
+                  categoryId: "1",
+                }}
               /> */}
             </div>
           </div>

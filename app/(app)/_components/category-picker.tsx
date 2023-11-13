@@ -11,7 +11,7 @@ interface CategoryPickerProps {
   categories: Category[];
 }
 
-const CategoryPicker = ({ categories }: CategoryPickerProps) => {
+export const CategoryPicker = ({ categories }: CategoryPickerProps) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -63,5 +63,3 @@ const CategoryPicker = ({ categories }: CategoryPickerProps) => {
     </div>
   );
 };
-
-export default CategoryPicker;
