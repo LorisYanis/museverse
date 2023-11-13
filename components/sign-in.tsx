@@ -2,15 +2,13 @@
 
 import Link from "next/link";
 import {
+  useAuth,
   ClerkLoading,
   SignInButton,
-  auth,
-  useAuth,
-  useUser,
 } from "@clerk/nextjs";
 
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, LucideIcon } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Loader } from "./loader";
 
 interface SignInProps {

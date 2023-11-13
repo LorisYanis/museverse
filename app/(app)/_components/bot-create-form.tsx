@@ -1,7 +1,10 @@
 "use client";
 
 import * as z from "zod";
+import axios from "axios";
+import { toast } from "sonner";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { Bot, Category } from "@prisma/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -26,13 +29,11 @@ import {
   WILLIAM_FAULKNER_PREAMBLE,
   WILLIAM_FAULKNER_SEED_CHAT,
 } from "@/lib/placeholder-data";
-import { SingleImageDropzone } from "@/components/single-image-dropzone";
 import { Button } from "@/components/ui/button";
+import { ImageUpload } from "@/components/image-upload";
 
 const formSchema = z.object({
-  imageSource: z.string().min(1, {
-    message: "Image is required",
-  }),
+  imageSource: z.string().min(1, { message: "Image is required" }),
   name: z.string().min(1, {
     message: "Name is required",
   }),
@@ -42,11 +43,11 @@ const formSchema = z.object({
   categoryId: z.string().min(1, {
     message: "Category is required.",
   }),
-  preabmle: z.string().min(250, {
-    message: "Preabmle cannot be less than 250 characters",
+  preamble: z.string().min(150, {
+    message: "Preabmle cannot be less than 150 characters",
   }),
-  seedChat: z.string().min(250, {
-    message: "Seed Chat cannot be less than 250 characters",
+  seedChat: z.string().min(150, {
+    message: "Seed Chat cannot be less than 150 characters",
   }),
 });
 
@@ -59,6 +60,8 @@ export const BotCreateForm = ({
   currentBotData,
   categories,
 }: BotCreateFormProps) => {
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: currentBotData || {
@@ -66,30 +69,46 @@ export const BotCreateForm = ({
       name: "",
       description: "",
       categoryId: "",
-      preabmle: "",
+      preamble: "",
       seedChat: "",
     },
   });
 
   const isLoading = form.formState.isSubmitting;
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-  }
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      if (!currentBotData) {
+        await axios.post("/api/bot", values);
+        toast.success("Bot created!");
+      }
+
+      if (currentBotData) {
+        await axios.post(`/api/bot/${currentBotData.id}`, values);
+        toast.success("Bot updated!");
+      }
+    } catch (error) {
+      toast.error("Something went wrong");
+      return null;
+    }
+
+    router.refresh();
+    router.push("/app");
+  };
 
   return (
-    <div className="container mb-10">
+    <div className="container mb-36">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex flex-col space-y-4"
+          className="flex flex-col space-y-5"
         >
           <FormField
             name="imageSource"
             render={({ field }) => (
               <FormItem className="self-center">
                 <FormControl>
-                  <SingleImageDropzone
+                  <ImageUpload
                     width={300}
                     height={300}
                     value={field.value}
@@ -124,7 +143,7 @@ export const BotCreateForm = ({
                 <FormLabel>Short Description</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="William Faulkner"
+                    placeholder="Renowned American author and novelist"
                     disabled={isLoading}
                     {...field}
                   />
@@ -165,14 +184,14 @@ export const BotCreateForm = ({
             )}
           />
           <FormField
-            name="preabmle"
+            name="preamble"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Preamble</FormLabel>
                 <FormControl>
                   <Textarea
                     className="resize-none"
-                    rows={4}
+                    rows={5}
                     placeholder={WILLIAM_FAULKNER_PREAMBLE}
                     disabled={isLoading}
                     {...field}
@@ -200,7 +219,7 @@ export const BotCreateForm = ({
               </FormItem>
             )}
           />
-          <Button className="self-center">
+          <Button type="submit" disabled={isLoading} className="self-center">
             {currentBotData ? "Update the Bot" : "Create the Bot"}
           </Button>
         </form>
