@@ -22,8 +22,8 @@ model Bot {
   imageSource   String
   name          String @db.Text
   description   String
-  preamble      String
-  seedChat      String
+  preamble      String @db.Text
+  seedChat      String @db.Text
 
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt

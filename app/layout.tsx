@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Toaster } from "sonner";
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 
@@ -38,7 +39,10 @@ export default function RootLayout({
             forcedTheme="dark"
             disableTransitionOnChange
           >
-            <EdgeStoreProvider>{children}</EdgeStoreProvider>
+            <EdgeStoreProvider>
+              <Toaster position="bottom-center" />
+              {children}
+            </EdgeStoreProvider>
           </ThemeProvider>
         </body>
       </html>

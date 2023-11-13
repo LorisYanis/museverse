@@ -33,7 +33,7 @@ export const CategoryPicker = ({ categories }: CategoryPickerProps) => {
 
   return (
     <div className="overflow-auto">
-      <nav className="w-fit mt-16 mb-10 bg-zinc-900 p-1 rounded-lg">
+      <div className="w-fit mt-16 mb-10 bg-zinc-900 p-1 rounded-lg">
         <div className="flex space-x-2 font-medium text-sm">
           <Button
             onClick={() => onCategory(undefined)}
@@ -59,7 +59,7 @@ export const CategoryPicker = ({ categories }: CategoryPickerProps) => {
             </Button>
           ))}
         </div>
-      </nav>
+      </div>
     </div>
   );
 };
