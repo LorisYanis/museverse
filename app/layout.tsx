@@ -8,6 +8,7 @@ import { EdgeStoreProvider } from "@/lib/edgestore";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 
 import "./globals.css";
+import { Gradient } from "@/components/gradient";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -42,6 +43,7 @@ export default function RootLayout({
             <EdgeStoreProvider>
               <Toaster position="bottom-center" />
               {children}
+              <Gradient />
             </EdgeStoreProvider>
           </ThemeProvider>
         </body>

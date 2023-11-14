@@ -28,7 +28,7 @@ export const ChatMessage = ({
     >
       {role !== "user" && <BotAvatar imageSource={imageSource} />}
 
-      <div className="rounded-lg p-3 bg-primary-foreground border-[1px] border-muted max-w-sm md:max-w-lg text-xs md:text-sm">
+      <div className="rounded-lg p-3 bg-background border-[1px] border-muted max-w-sm md:max-w-lg text-xs md:text-sm">
         {content}
       </div>
 
