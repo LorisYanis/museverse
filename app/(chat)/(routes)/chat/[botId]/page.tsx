@@ -1,5 +1,5 @@
 import { auth } from "@clerk/nextjs";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import prismadb from "@/lib/prismadb";
 import { Chat } from "@/components/chat/chat";
@@ -21,7 +21,21 @@ const ChatBotIdPage = async ({ params }: ChatBotIdPageProps) => {
     where: {
       id: params.botId,
     },
+    include: {
+      messages: {
+        orderBy: {
+          createdAt: "asc",
+        },
+        where: {
+          userId,
+        },
+      },
+    },
   });
+
+  if (!bot) {
+    notFound();
+  }
 
   return <Chat bot={bot} />;
 };

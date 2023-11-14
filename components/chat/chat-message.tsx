@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { BotAvatar } from "@/components/avatars/bot-avatar";
 import { UserAvatar } from "@/components/avatars/user-avatar";
 
-interface ChatMessageProps {
+export interface ChatMessageProps {
   role: "system" | "user";
   isLoading?: boolean;
   content?: string;
@@ -28,8 +28,8 @@ export const ChatMessage = ({
     >
       {role !== "user" && <BotAvatar imageSource={imageSource} />}
 
-      <div className="rounded-lg p-3 bg-background/50 backdrop-blur border-[1px] border-muted max-w-sm md:max-w-lg text-xs md:text-sm">
-        {content}
+      <div className="rounded-lg break-words p-3 bg-background/50 backdrop-blur border-[1px] border-muted max-w-sm md:max-w-lg text-xs md:text-sm">
+        {!isLoading && content}
       </div>
 
       {role === "user" && <UserAvatar />}
