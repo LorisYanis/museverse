@@ -33,15 +33,12 @@ export const CategoryPicker = ({ categories }: CategoryPickerProps) => {
 
   return (
     <div className="overflow-auto">
-      <div className="w-fit mt-16 mb-10 bg-zinc-900 p-1 rounded-lg">
+      <div className="w-fit mt-16 mb-10 border border-input bg-background/50 backdrop-blur p-1 rounded-lg">
         <div className="flex space-x-2 font-medium text-sm">
           <Button
             onClick={() => onCategory(undefined)}
             variant="ghost"
-            className={cn(
-              "hover:bg-background",
-              categoryId === null && "bg-background",
-            )}
+            className={cn("hover:bg-muted", categoryId === null && "bg-muted")}
           >
             All
           </Button>
@@ -50,8 +47,8 @@ export const CategoryPicker = ({ categories }: CategoryPickerProps) => {
               onClick={() => onCategory(category.id)}
               variant="ghost"
               className={cn(
-                "hover:bg-background",
-                categoryId === category.id && "bg-background",
+                "hover:bg-muted",
+                categoryId === category.id && "bg-muted",
               )}
               key={category.id}
             >

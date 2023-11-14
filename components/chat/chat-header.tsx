@@ -19,7 +19,7 @@ export const ChatHeader = ({ botImageSource, botName }: ChatHeaderProps) => {
   return (
     <header className="sticky z-50 top-0 bg-background/50 backdrop-blur flex flex-col gap-y-6 justify-center items-center p-6 md:px-10 mb-10 border-b border-input">
       <Button
-        variant="outline"
+        variant="outlineOpacity"
         className="gap-x-2"
         onClick={() => router.back()}
       >

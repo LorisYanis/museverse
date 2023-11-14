@@ -3,7 +3,6 @@ import Balancer from "react-wrap-balancer";
 import { ArrowUpLeft } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Gradient } from "@/components/gradient";
 
 export default function Erorr() {
   // return (
