@@ -2,12 +2,19 @@
 
 import { Bot } from "@prisma/client";
 import { ChatMessage } from "./chat-message";
+import { ElementRef, useEffect, useRef } from "react";
 
 interface ChatMessagesProps {
   bot: Bot;
 }
 
 export const ChatMessages = ({ bot }: ChatMessagesProps) => {
+  const lastDivRef = useRef<ElementRef<"div">>(null);
+
+  useEffect(() => {
+    lastDivRef?.current?.scrollIntoView({ behavior: "smooth" });
+  }, []);
+
   return (
     <div className="flex flex-col gap-5 items-end justify-end flex-1 px-3 pb-8">
       <ChatMessage
@@ -100,6 +107,7 @@ export const ChatMessages = ({ bot }: ChatMessagesProps) => {
         Find the magic, pure and bright.`}
         imageSource={bot.imageSource}
       />
+      <div ref={lastDivRef} />
     </div>
   );
 };
