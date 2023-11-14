@@ -104,24 +104,6 @@ body,
     animation: opacityFromZeroToOne 3s ease;
   }
 
-  .chatLoader span {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: white;
-    animation: flashing 1.4s infinite linear;
-    margin: 0 4px;
-    display: inline-block;
-  }
-
-  .chatLoader span:nth-child(2) {
-    animation-delay: 0.2s;
-  }
-
-  .chatLoader span:nth-child(3) {
-    animation-delay: 0.4s;
-  }
-
   @keyframes TextAnimation {
     0%,
     100% {
@@ -138,27 +120,6 @@ body,
     }
     100% {
       transform: translateY(0);
-    }
-  }
-
-  @keyframes opacityFromZeroToOne {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 100;
-    }
-
-    @keyframes flashing {
-      0% {
-        opacity: 0.2;
-      }
-      20% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0.2;
-      }
     }
   }
 }
@@ -187,5 +148,44 @@ body,
       transparent 25%,
       rgba(24, 24, 27, 1) 100%
     );
+  }
+
+  .chatLoader span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: white;
+    animation: flashing 1.4s infinite linear;
+    margin: 0 4px;
+    display: inline-block;
+  }
+
+  .chatLoader span:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .chatLoader span:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes opacityFromZeroToOne {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 100;
+    }
+  }
+
+  @keyframes flashing {
+    0% {
+      opacity: 0.2;
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.2;
+    }
   }
 }

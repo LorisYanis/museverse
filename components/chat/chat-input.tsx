@@ -29,12 +29,14 @@ export const ChatInput = ({
         value={input}
         onChange={handleInputChange}
         placeholder={`Write to ${botName}`}
+        disabled={isLoading}
       />
       <Button
         type="submit"
         variant="outlineOpacity"
         size="icon"
         className="group transition"
+        disabled={isLoading}
       >
         <ArrowUp className="h-5 w-5 transition text-muted-foreground group-hover:text-foreground" />
       </Button>
