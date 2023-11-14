@@ -1,16 +1,16 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface BotAvatarProps {
-  src?: string;
+  imageSource?: string;
   name?: string;
 }
 
-export const BotAvatar = ({ src, name }: BotAvatarProps) => {
+export const BotAvatar = ({ imageSource, name }: BotAvatarProps) => {
   const firstNameLetter = name?.split("")[0];
 
   return (
     <Avatar className="w-8 h-8">
-      <AvatarImage src={src} />
+      <AvatarImage src={imageSource} />
       <AvatarFallback>{firstNameLetter ? firstNameLetter : "B"}</AvatarFallback>
     </Avatar>
   );

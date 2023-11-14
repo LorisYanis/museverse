@@ -20,7 +20,7 @@ export const Header = ({ isLanding }: HeaderProps) => {
     <header
       className={cn(
         "flex flex-row justify-between items-center p-6 md:px-10 mb-10",
-        !isLanding ? "border-b border-b-zinc-800" : "",
+        !isLanding ? "border-b border-input" : "",
       )}
     >
       <Link href={isLanding ? "/" : "/app"} className="flex flex-row gap-2">

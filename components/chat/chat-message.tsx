@@ -6,10 +6,9 @@ import { UserAvatar } from "@/components/avatars/user-avatar";
 
 interface ChatMessageProps {
   role: "system" | "user";
-  isPreview?: string;
-  isLoading?: string;
+  isLoading?: boolean;
   content?: string;
-  src?: string;
+  imageSource?: string;
   id?: string;
 }
 
@@ -17,7 +16,7 @@ export const ChatMessage = ({
   role,
   isLoading,
   content,
-  src,
+  imageSource,
   id,
 }: ChatMessageProps) => {
   return (
@@ -27,7 +26,7 @@ export const ChatMessage = ({
         role === "user" && "justify-end",
       )}
     >
-      {role !== "user" && <BotAvatar src={src} />}
+      {role !== "user" && <BotAvatar imageSource={imageSource} />}
 
       <div className="rounded-lg p-3 bg-primary-foreground border-[1px] border-muted max-w-sm md:max-w-lg text-xs md:text-sm">
         {content}

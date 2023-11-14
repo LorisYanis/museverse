@@ -14,7 +14,9 @@ async function seed() {
         { name: "Scientists" },
       ],
     });
-  } catch (error) {}
+  } catch (error) {
+    console.log("SEED_ERROR", error);
+  }
 }
 
 seed();
