@@ -28,11 +28,13 @@ export const Header = ({ isLanding }: HeaderProps) => {
         <span className="hidden md:block font-bold">museverse.ai</span>
       </Link>
       <div className="flex flex-row gap-x-2">
-        <SignIn
-          authenticatedText="Go to app"
-          unauthenticatedText="Get museverse.ai Free"
-          variant="ghost"
-        />
+        {isLanding && (
+          <SignIn
+            authenticatedText="Go to app"
+            unauthenticatedText="Get museverse.ai Free"
+            variant="ghost"
+          />
+        )}
         {isLoaded && isSignedIn && <UserButton afterSignOutUrl="/" />}
         <ClerkLoading>
           <Button variant="ghost">

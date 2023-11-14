@@ -6,6 +6,7 @@ import { CategoryPicker } from "../../_components/category-picker";
 
 const AppPage = async () => {
   const categories = await prismadb.category.findMany();
+  const bots = await prismadb.bot.findMany();
 
   return (
     <div className="flex flex-1 flex-col items-center">
@@ -31,7 +32,7 @@ const AppPage = async () => {
         <div className="container">
           <div className="flex flex-col items-center">
             <CategoryPicker categories={categories} />
-            <BotCards />
+            <BotCards bots={bots} />
           </div>
         </div>
       </section>

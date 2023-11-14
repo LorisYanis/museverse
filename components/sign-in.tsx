@@ -1,15 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import {
-  useAuth,
-  ClerkLoading,
-  SignInButton,
-} from "@clerk/nextjs";
+import { useAuth, SignInButton } from "@clerk/nextjs";
 
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
-import { Loader } from "./loader";
 
 interface SignInProps {
   authenticatedText: string;
@@ -24,11 +19,11 @@ export const SignIn = ({
   variant = "default",
   icon,
 }: SignInProps) => {
-  const { isLoaded, isSignedIn } = useAuth();
+  const { isSignedIn } = useAuth();
 
   return (
     <div>
-      {isLoaded && isSignedIn && (
+      {isSignedIn && (
         <Button variant={variant} asChild>
           <Link href="/app">
             {authenticatedText}
@@ -36,7 +31,7 @@ export const SignIn = ({
           </Link>
         </Button>
       )}
-      {isLoaded && !isSignedIn && (
+      {!isSignedIn && (
         <SignInButton mode="modal" afterSignInUrl="/app">
           <Button variant={variant}>
             {unauthenticatedText}
@@ -44,11 +39,6 @@ export const SignIn = ({
           </Button>
         </SignInButton>
       )}
-      <ClerkLoading>
-        <Button variant={variant}>
-          <Loader />
-        </Button>
-      </ClerkLoading>
     </div>
   );
 };
