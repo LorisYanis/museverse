@@ -1,6 +1,8 @@
-import prismadb from "@/lib/prismadb";
-import { currentUser } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
+import { currentUser } from "@clerk/nextjs";
+import { clerkClient } from "@clerk/nextjs/server";
+
+import prismadb from "@/lib/prismadb";
 
 export async function POST(req: Request) {
   try {
@@ -23,6 +25,19 @@ export async function POST(req: Request) {
 
     if (!user || !user.id) {
       return new NextResponse("Unauthenticated", { status: 401 });
+    }
+
+    const memberships =
+      await clerkClient.organizations.getOrganizationMembershipList({
+        organizationId: process.env.CLERK_ORGANIZATION_ID!,
+      });
+
+    const isAdmin = memberships
+      .map((member) => member.publicUserData?.userId === user.id)
+      .includes(true);
+
+    if (!isAdmin) {
+      return new NextResponse("Unauthorized", { status: 403 });
     }
 
     const bot = await prismadb.bot.create({
