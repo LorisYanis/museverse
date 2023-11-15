@@ -130,7 +130,7 @@ body,
   }
   .scroll-bar::after,
   .scroll-bar::before {
-    @apply absolute top-0 w-20 z-10 h-full;
+    @apply absolute top-0 w-20 z-10 h-full rounded-lg pointer-events-none;
   }
 }
 
