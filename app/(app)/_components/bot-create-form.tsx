@@ -84,7 +84,7 @@ export const BotCreateForm = ({
       }
 
       if (currentBotData) {
-        await axios.post(`/api/bot/${currentBotData.id}`, values);
+        await axios.patch(`/api/bot/${currentBotData.id}`, values);
         toast.success("Bot updated!");
       }
     } catch (error) {
@@ -97,7 +97,7 @@ export const BotCreateForm = ({
   };
 
   return (
-    <div className="container mb-36">
+    <div className="container my-36">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -112,6 +112,7 @@ export const BotCreateForm = ({
                     width={300}
                     height={300}
                     value={field.value}
+                    botImageSource={currentBotData?.imageSource}
                     onChange={field.onChange}
                     disabled={isLoading}
                   />

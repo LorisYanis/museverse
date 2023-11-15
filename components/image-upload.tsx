@@ -10,6 +10,7 @@ interface ImageUploadProps {
   disabled?: boolean;
   width?: number;
   height?: number;
+  botImageSource?: string;
 }
 
 export const ImageUpload = ({
@@ -18,6 +19,7 @@ export const ImageUpload = ({
   disabled,
   width = 300,
   height = 300,
+  botImageSource,
 }: ImageUploadProps) => {
   const [image, setImage] = useState<File>();
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -43,7 +45,7 @@ export const ImageUpload = ({
       <SingleImageDropzone
         width={width}
         height={height}
-        value={image}
+        value={image || botImageSource}
         onChange={(image?: File) => onSubmit(image)}
         disabled={isSubmitting || disabled}
       />
