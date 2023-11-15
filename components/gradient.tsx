@@ -1,7 +1,11 @@
+import Image from "next/image";
+
 export const Gradient = () => {
   return (
     <div>
-      <div className="-z-50 translate-x-1/2 bg-gradient-to-t from-zinc-400 via-zinc-700 to-zinc-900 right-1/2 fixed bottom-0 translate-y-1/2 h-[1000px] w-[1000px] blur-[200px] rounded-full glow-animate background-animate" />
+      <div className="fixed h-[100rem] w-[100rem] right-1/2 translate-x-1/2 bottom-0 translate-y-1/2 -z-50 glow-animate">
+        <Image src="/main-gradient.png" fill alt="" quality={100} />
+      </div>
     </div>
   );
 };
