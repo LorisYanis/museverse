@@ -53,7 +53,7 @@ export async function POST(
     const botKey = {
       userId: user.id,
       botId: botId,
-      modelName: "vicuna13b",
+      modelName: "llama2-13b",
     };
 
     const memoryManager = MemoryManager.getInstance();
@@ -82,7 +82,7 @@ export async function POST(
 
     const model = new Replicate({
       model:
-        "replicate/vicuna-13b:6282abe6a492de4145d7bb601023762212f9ddbbe78278bd6771c8b3b2f2a13b",
+        "meta/llama-2-13b-chat:f4e2de70d66816a838a89eeeb621910adffb0dd0baba3976c96980970978018d",
       input: {
         max_length: 2048,
       },
