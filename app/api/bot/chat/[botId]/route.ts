@@ -82,7 +82,7 @@ export async function POST(
 
     const model = new Replicate({
       model:
-        "meta/llama-2-13b-chat:f4e2de70d66816a838a89eeeb621910adffb0dd0baba3976c96980970978018d",
+        "a16z-infra/llama-2-13b-chat:f4e2de70d66816a838a89eeeb621910adffb0dd0baba3976c96980970978018d",
       input: {
         max_length: 2048,
       },

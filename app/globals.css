@@ -151,8 +151,8 @@ body,
   }
 
   .chatLoader span {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     background-color: white;
     animation: flashing 1.4s infinite linear;

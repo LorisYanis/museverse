@@ -109,8 +109,8 @@ export const BotCreateForm = ({
               <FormItem className="self-center">
                 <FormControl>
                   <ImageUpload
-                    width={300}
-                    height={300}
+                    width={280}
+                    height={280}
                     value={field.value}
                     botImageSource={currentBotData?.imageSource}
                     onChange={field.onChange}

@@ -28,7 +28,13 @@ export const ChatMessage = ({
     >
       {role !== "user" && <BotAvatar imageSource={imageSource} />}
 
-      <div className="rounded-lg break-words p-3 bg-background/50 backdrop-blur border-[1px] border-muted max-w-sm md:max-w-lg text-xs md:text-sm">
+      <div
+        className={cn(
+          "rounded-lg break-words p-3 bg-background/50 backdrop-blur border-[1px] border-muted max-w-sm md:max-w-lg text-xs md:text-sm",
+          role !== "user" && "mr-10",
+          role === "user" && "ml-10",
+        )}
+      >
         {isLoading ? (
           <div className="chatLoader">
             <span></span>
