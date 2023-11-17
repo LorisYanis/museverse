@@ -96,6 +96,29 @@ export const BotCreateForm = ({
     router.push("/app");
   };
 
+  const onDelete = async (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    try {
+      event.preventDefault();
+
+      if (!currentBotData) {
+        return null;
+      }
+
+      if (currentBotData) {
+        await axios.delete(`/api/bot/${currentBotData.id}`);
+        toast.success("Bot deleted!");
+      }
+    } catch (error) {
+      toast.error("Something went wrong");
+      return null;
+    }
+
+    router.refresh();
+    router.push("/app");
+  };
+
   return (
     <div className="container my-36">
       <Form {...form}>
@@ -220,9 +243,21 @@ export const BotCreateForm = ({
               </FormItem>
             )}
           />
-          <Button type="submit" disabled={isLoading} className="self-center">
-            {currentBotData ? "Update the Bot" : "Create the Bot"}
-          </Button>
+          <div className="flex flex-row items-center justify-center gap-x-3 w-full">
+            <Button type="submit" disabled={isLoading} className="self-center">
+              {currentBotData ? "Update the Bot" : "Create the Bot"}
+            </Button>
+            {currentBotData && (
+              <Button
+                variant="outlineOpacity"
+                onClick={(event) => onDelete(event)}
+                disabled={isLoading}
+                className="self-center"
+              >
+                Delete the Bot
+              </Button>
+            )}
+          </div>
         </form>
       </Form>
     </div>

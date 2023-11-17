@@ -53,7 +53,7 @@ model Message {
   botId        String
   userId       String
 
-  bot          Bot @relation(fields: [botId], references: [id])
+  bot          Bot @relation(fields: [botId], references: [id], onDelete: Cascade)
 
   @@index([botId])
 }
