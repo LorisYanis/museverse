@@ -83,9 +83,9 @@ export async function POST(
     const model = new Replicate({
       model:
         "a16z-infra/llama-2-13b-chat:f4e2de70d66816a838a89eeeb621910adffb0dd0baba3976c96980970978018d",
-      input: {
-        max_length: 2048,
-      },
+      // input: {
+      //   max_length: 2048,
+      // },
       apiKey: process.env.REPLICATE_API_KEY,
       callbackManager: CallbackManager.fromHandlers(handlers),
     });
@@ -95,24 +95,22 @@ export async function POST(
     const botResponse = String(
       await model
         .call(
-          `
-        Create simple, highly personified sentences WITHOUT any prefixes at ALL. DO NOT use ${bot.name}: prefix.
-        Always look for ways to get your interlocutor thinking outside the box and give them VERY specific advice on how to do so.
+          `Create simple, highly personified sentences WITHOUT any prefixes at ALL. DO NOT use ${bot.name}: prefix.
+          Always look for ways to get your interlocutor thinking outside the box and give them VERY specific advon how to do so.
 
-        ${bot.preamble}
+          ${bot.preamble}
 
-        Below are relevant details about ${bot.name}'s past chats and the conversation you are in.
-        ${relevantHistory}
+          Below are relevant details about ${bot.name}'s past chats and the conversation you are in.
+          ${relevantHistory}
 
-
-        ${recentChatHistory}\n${bot.name}:
+          ${recentChatHistory}\n${bot.name}:
         `,
         )
         .catch(console.error),
     );
 
     const cleaned = botResponse.replaceAll(",", "");
-    const chunks = cleaned.split("\n");
+    const chunks = cleaned.split("\n\n\n");
     const response = chunks[0];
 
     await memoryManager.writeToHistory("" + response.trim(), botKey);
