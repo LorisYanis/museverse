@@ -17,9 +17,9 @@ interface BotCardProps {
 
 export const BotCard = ({ bot }: BotCardProps) => {
   return (
-    <Card className="max-w-[20rem] space-y-4 p-5 bg-background/50 backdrop-blur">
-      <CardHeader className="p-0">
-        <div className="relative w-full h-[16rem]">
+    <Card className="max-w-[20rem] space-y-4 flex flex-col justify-between p-5 bg-background/50 backdrop-blur">
+      <CardContent className="p-0">
+        <div className="relative w-full h-[16rem] mb-4">
           <Image
             src={bot.imageSource}
             fill
@@ -27,10 +27,10 @@ export const BotCard = ({ bot }: BotCardProps) => {
             alt={bot.name}
           />
         </div>
-      </CardHeader>
-      <CardContent className="p-0">
-        <h3 className="font-semibold">{bot.name}</h3>
-        <p className="text-muted-foreground">{bot.description}</p>
+        <div className="flex flex-col gap-1">
+          <h3 className="font-semibold">{bot.name}</h3>
+          <p className="text-muted-foreground">{bot.description}</p>
+        </div>
       </CardContent>
       <CardFooter className="p-0">
         <Button asChild>
