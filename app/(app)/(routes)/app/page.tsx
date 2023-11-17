@@ -9,7 +9,7 @@ const AppPage = async () => {
 
   return (
     <div className="flex flex-1 flex-col items-center">
-      <section className="mb-36 w-screen">
+      <section className="mb-36 w-full">
         <div className="container">
           <div className="flex flex-col items-center">
             <CategoryPicker categories={categories} />

@@ -215,7 +215,7 @@ export const BotCreateForm = ({
                 <FormControl>
                   <Textarea
                     className="resize-none"
-                    rows={5}
+                    rows={8}
                     placeholder={WILLIAM_FAULKNER_PREAMBLE}
                     disabled={isLoading}
                     {...field}
