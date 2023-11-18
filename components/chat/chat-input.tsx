@@ -24,7 +24,10 @@ export const ChatInput = ({
   handleInputChange,
 }: ChatInputProps) => {
   return (
-    <form onSubmit={onSubmit} className="pb-5 flex flex-row gap-2">
+    <form
+      onSubmit={onSubmit}
+      className="pb-5 flex flex-row gap-x-1 md:gap-x-2 px-3"
+    >
       <Input
         value={input}
         onChange={handleInputChange}
@@ -36,7 +39,7 @@ export const ChatInput = ({
         variant="outlineOpacity"
         size="icon"
         className="group transition"
-        disabled={isLoading}
+        disabled={isLoading || !input}
       >
         <ArrowUp className="h-5 w-5 transition text-muted-foreground group-hover:text-foreground" />
       </Button>

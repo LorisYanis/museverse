@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 
 import prismadb from "@/lib/prismadb";
-import { BotCreateForm } from "@/app/(app)/_components/bot-create-form";
+import { BotCreateForm } from "../../../_components/bot-create-form";
 
 interface BotUpdatePageProps {
   params: {

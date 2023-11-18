@@ -23,7 +23,7 @@ export const ChatMessages = ({
   }, [messages]);
 
   return (
-    <div className="flex flex-col gap-5 items-end justify-end flex-1 px-3 pb-8">
+    <div className="flex flex-col gap-y-3 md:gap-y-5 items-end justify-end flex-1 px-3 pb-4 md:pb-8">
       {messages?.map((message) => (
         <ChatMessage
           role={message.role}
