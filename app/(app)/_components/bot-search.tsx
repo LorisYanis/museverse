@@ -37,7 +37,7 @@ export const BotSearch = () => {
     );
 
     router.push(route);
-  }, [debouncedValue, categoryId, botName, router]);
+  }, [debouncedValue, categoryId, router]);
 
   return (
     <div className="relative">

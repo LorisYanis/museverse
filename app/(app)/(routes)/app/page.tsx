@@ -13,9 +13,7 @@ const AppPage = async ({
   const bots = await prismadb.bot.findMany({
     where: {
       categoryId,
-      name: {
-        search: botName,
-      },
+      name: { contains: botName },
     },
     orderBy: {
       createdAt: "asc",
