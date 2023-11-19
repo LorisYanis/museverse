@@ -1,14 +1,16 @@
 "use client";
 
 import { ArrowUp } from "lucide-react";
-import { ChangeEvent, FormEvent } from "react";
+import { ChangeEvent, Dispatch, FormEvent, SetStateAction } from "react";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { ChatSTT } from "./chat-STT";
 
 interface ChatInputProps {
   botName: string;
   input: string;
+  setInput: Dispatch<SetStateAction<string>>;
   isLoading?: boolean;
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
   handleInputChange: (
@@ -19,6 +21,7 @@ interface ChatInputProps {
 export const ChatInput = ({
   botName,
   input,
+  setInput,
   isLoading,
   onSubmit,
   handleInputChange,
@@ -34,6 +37,7 @@ export const ChatInput = ({
         placeholder={`Write to ${botName}`}
         disabled={isLoading}
       />
+      <ChatSTT setInput={setInput} />
       <Button
         type="submit"
         variant="outlineOpacity"

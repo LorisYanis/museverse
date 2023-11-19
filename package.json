@@ -42,6 +42,7 @@
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
     "uuidv4": "^6.2.13",
+    "whisper-speech-to-text": "^1.0.3",
     "zod": "^3.22.4"
   },
   "devDependencies": {

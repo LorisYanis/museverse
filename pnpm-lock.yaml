@@ -104,6 +104,9 @@ dependencies:
   uuidv4:
     specifier: ^6.2.13
     version: 6.2.13
+  whisper-speech-to-text:
+    specifier: ^1.0.3
+    version: 1.0.3
   zod:
     specifier: ^3.22.4
     version: 3.22.4
@@ -4504,7 +4507,7 @@ packages:
       langchainhub: 0.0.6
       langsmith: 0.0.48
       ml-distance: 4.0.1
-      openai: 4.17.5
+      openai: 4.19.0
       openapi-types: 12.1.3
       p-queue: 6.6.2
       p-retry: 4.6.2
@@ -4889,8 +4892,8 @@ packages:
     dependencies:
       wrappy: 1.0.2
 
-  /openai@4.17.5:
-    resolution: {integrity: sha512-SDgA933/QOjISCgWRc/JQhY1HweYZ6FOie3bWrCpj09FA5xIlaomldbyzICHNjtkh7SWEmGYFjRHIDtuwr+eTw==}
+  /openai@4.19.0:
+    resolution: {integrity: sha512-cJbl0noZyAaXVKBTMMq6X5BAvP1pm2rWYDBnZes99NL+Zh5/4NmlAwyuhTZEru5SqGGZIoiYKeMPXy4bm9DI0w==}
     hasBin: true
     dependencies:
       '@types/node': 18.18.9
@@ -5311,6 +5314,10 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.1
+
+  /recordrtc@5.6.2:
+    resolution: {integrity: sha512-1QNKKNtl7+KcwD1lyOgP3ZlbiJ1d0HtXnypUy7yq49xEERxk31PHvE9RCciDrulPCY7WJ+oz0R9hpNxgsIurGQ==}
+    dev: false
 
   /reflect.getprototypeof@1.0.4:
     resolution: {integrity: sha512-ECkTw8TmJwW60lOTR+ZkODISW6RQ8+2CL3COqtiJKLd6MmB45hN51HprHFziKLGkAuTGQhBb91V8cy+KHlaCjw==}
@@ -6097,6 +6104,15 @@ packages:
     dependencies:
       isexe: 2.0.0
     dev: true
+
+  /whisper-speech-to-text@1.0.3:
+    resolution: {integrity: sha512-aEfZyFvVMw4nueaamtmpEwEMm6oFp8694YZ7oXFAuptfaGlfQ3lBLZVV+vGg4eD4VIPGheZNfBL7Db732nvYbA==}
+    dependencies:
+      axios: 1.6.1
+      recordrtc: 5.6.2
+    transitivePeerDependencies:
+      - debug
+    dev: false
 
   /wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}

@@ -10,6 +10,7 @@ import { ChatInput } from "@/components/chat/chat-input";
 import { ChatHeader } from "@/components/chat/chat-header";
 import { ChatMessages } from "@/components/chat/chat-messages";
 import { ChatMessageProps } from "./chat-message";
+import { Gradient } from "../gradient";
 
 interface ChatProps {
   bot: Bot & { messages: Message[] };
@@ -55,6 +56,7 @@ export const Chat = ({ bot }: ChatProps) => {
       <ChatInput
         botName={bot.name}
         input={input}
+        setInput={setInput}
         isLoading={isLoading}
         onSubmit={onSubmit}
         handleInputChange={handleInputChange}
