@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  previewFeatures = ["fullTextIndex"]
+  previewFeatures = ["fullTextIndex", "fullTextSearch"]
 
 }
 
@@ -33,6 +33,7 @@ model Bot {
 
   messages      Message[]
 
+  @@fulltext([name])
   @@index([categoryId])
 }
 

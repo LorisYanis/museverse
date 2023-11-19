@@ -29,7 +29,9 @@ export const BotCard = ({ bot }: BotCardProps) => {
         </div>
         <div className="flex flex-col gap-1">
           <h3 className="font-semibold">{bot.name}</h3>
-          <p className="text-muted-foreground">{bot.description}</p>
+          <p className="text-xs md:text-sm text-muted-foreground">
+            {bot.description}
+          </p>
         </div>
       </CardContent>
       <CardFooter className="p-0">
