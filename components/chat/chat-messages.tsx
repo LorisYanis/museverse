@@ -1,9 +1,9 @@
 "use client";
 
-import { Bot, Message } from "@prisma/client";
-
-import { ChatMessage, ChatMessageProps } from "./chat-message";
+import { Bot } from "@prisma/client";
 import { ElementRef, useEffect, useRef } from "react";
+
+import { ChatMessage, ChatMessageProps } from "@/components/chat/chat-message";
 
 interface ChatMessagesProps {
   isLoading?: boolean;

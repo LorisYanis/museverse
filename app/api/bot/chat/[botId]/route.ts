@@ -1,12 +1,17 @@
+import dotenv from "dotenv";
 import { NextResponse } from "next/server";
 import { currentUser } from "@clerk/nextjs";
 import { CallbackManager } from "langchain/callbacks";
-import { Replicate } from "langchain/llms/replicate";
+import { LLMChain } from "langchain/chains";
+import { OpenAI } from "langchain/llms/openai";
+import { PromptTemplate } from "langchain/prompts";
 import { LangChainStream, StreamingTextResponse } from "ai";
 
 import prismadb from "@/lib/prismadb";
 import { rateLimit } from "@/lib/rate-limit";
 import { MemoryManager } from "@/lib/memory";
+
+dotenv.config({ path: `.env` });
 
 export async function POST(
   request: Request,
@@ -17,7 +22,7 @@ export async function POST(
 
     const user = await currentUser();
 
-    if (!user || !user.id) {
+    if (!user || !user.id || !user.firstName) {
       return new NextResponse("Unauthenticated", { status: 401 });
     }
 
@@ -44,16 +49,18 @@ export async function POST(
     });
 
     if (!bot) {
-      return new NextResponse("Bot doesn't exist", { status: 404 });
+      return new NextResponse("Bot does not exist", { status: 404 });
     }
 
     const botId = bot.id;
     const botFileName = `${botId}.txt`;
 
+    console.log("prompt: ", prompt);
+
     const botKey = {
       userId: user.id,
       botId: botId,
-      modelName: "llama2-13b",
+      modelName: "chatgpt",
     };
 
     const memoryManager = MemoryManager.getInstance();
@@ -80,49 +87,54 @@ export async function POST(
 
     const { handlers } = LangChainStream();
 
-    const model = new Replicate({
-      model:
-        "meta/llama-2-13b-chat:f4e2de70d66816a838a89eeeb621910adffb0dd0baba3976c96980970978018d",
-      input: {
-        max_length: 4096,
-        max_new_tokens: 250,
-      },
-      apiKey: process.env.REPLICATE_API_KEY,
+    const model = new OpenAI({
+      modelName: "gpt-3.5-turbo-16k",
+      openAIApiKey: process.env.OPENAI_API_KEY,
       callbackManager: CallbackManager.fromHandlers(handlers),
     });
-
+    // DEBUG
     model.verbose = true;
 
-    const botResponse = String(
-      await model
-        .call(
-          `Create SHORT (within 4 sentences), highly personified, yet complete response WITHOUT any prefixes at ALL. DO NOT use ${bot.name}: prefix. Always look for ways to get your interlocutor thinking creatively and give them VERY specific advon how to do so.
+    const chainPrompt = PromptTemplate.fromTemplate(
+      `You're ${bot.name}, and You're talking with ${user.firstName}.
 
-          ${bot.preamble}
+      Create SHORT [within 4 sentences], highly personified, yet complete response WITHOUT any prefixes at ALL. DO NOT use ${bot.name}: prefix. Always look for ways to get your interlocutor thinking creatively and give them VERY specific advon how to do so.
 
-          Below are relevant details about ${bot.name}'s past chats and the conversation you are in.
-          ${relevantHistory}
+      Below is your preamble
+      ${bot.preamble}
 
-          ${recentChatHistory}\n${bot.name}:
-        `,
-        )
-        .catch(console.error),
+      Below are relevant details about ${bot.name}'s past chats and the conversation you are in
+      ${relevantHistory}
+
+      Below is a relevant conversation history
+      ${recentChatHistory}`,
     );
 
-    const cleaned = botResponse.replaceAll(",", "");
-    const chunks = cleaned.split("\n\n\n");
-    const response = chunks[0];
+    const chain = new LLMChain({
+      llm: model,
+      prompt: chainPrompt,
+    });
 
-    await memoryManager.writeToHistory("" + response.trim(), botKey);
+    const result = await chain
+      .call({
+        relevantHistory,
+        recentChatHistory: recentChatHistory,
+      })
+      .catch(console.error);
+
+    const chatHistoryRecord = await memoryManager.writeToHistory(
+      result!.text + "\n",
+      botKey,
+    );
+    console.log("chatHistoryRecord", chatHistoryRecord);
+
     var Readable = require("stream").Readable;
 
     let s = new Readable();
-    s.push(response);
+    s.push(result!.text);
     s.push(null);
 
-    if (response !== undefined && response.length > 1) {
-      memoryManager.writeToHistory("" + response.trim(), botKey);
-
+    if (result !== undefined && result.text.length > 1) {
       await prismadb.bot.update({
         where: {
           id: params.botId,
@@ -131,7 +143,7 @@ export async function POST(
           messages: {
             create: {
               role: "system",
-              content: response.trim(),
+              content: result.text,
               userId: user.id,
             },
           },

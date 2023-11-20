@@ -24,6 +24,8 @@ export const Chat = ({ bot }: ChatProps) => {
     useCompletion({
       api: `/api/bot/chat/${bot.id}`,
       onFinish(_prompt, completion) {
+        console.log("completion: ", completion);
+
         const systemMessage: ChatMessageProps = {
           role: "system",
           content: completion,

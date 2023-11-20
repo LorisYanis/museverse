@@ -21,13 +21,17 @@ export const CategoryPicker = ({ categories }: CategoryPickerProps) => {
   const onCategory = (id: string | undefined) => {
     const query = { categoryId: id, botName };
 
-    const route = queryString.stringifyUrl(
-      {
-        url: window.location.href,
-        query,
-      },
-      { skipEmptyString: true, skipNull: true },
-    );
+    let route = "";
+
+    if (typeof window !== undefined) {
+      route = queryString.stringifyUrl(
+        {
+          url: window.location.href,
+          query,
+        },
+        { skipEmptyString: true, skipNull: true },
+      );
+    }
 
     router.push(route);
   };
