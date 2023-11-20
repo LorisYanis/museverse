@@ -98,7 +98,7 @@ export async function POST(
     const chainPrompt = PromptTemplate.fromTemplate(
       `You're ${bot.name}, and You're talking with ${user.firstName}.
 
-      Create SHORT [within 4 sentences], highly personified, yet complete response WITHOUT any prefixes at ALL. DO NOT use ${bot.name}: prefix. Always look for ways to get your interlocutor thinking creatively and give them VERY specific advon how to do so.
+      Create SHORT and highly personified response WITHOUT any prefixes at ALL. DO NOT use ${bot.name}: prefix.
 
       Below is your preamble
       ${bot.preamble}
