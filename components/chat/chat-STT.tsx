@@ -1,3 +1,5 @@
+"use client";
+
 import { Mic, StopCircle } from "lucide-react";
 import { Button } from "../ui/button";
 import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
