@@ -82,10 +82,11 @@ export async function POST(
 
     const model = new Replicate({
       model:
-        "a16z-infra/llama-2-13b-chat:f4e2de70d66816a838a89eeeb621910adffb0dd0baba3976c96980970978018d",
-      // input: {
-      //   max_length: 2048,
-      // },
+        "meta/llama-2-13b-chat:f4e2de70d66816a838a89eeeb621910adffb0dd0baba3976c96980970978018d",
+      input: {
+        max_length: 4096,
+        max_new_tokens: 250,
+      },
       apiKey: process.env.REPLICATE_API_KEY,
       callbackManager: CallbackManager.fromHandlers(handlers),
     });
@@ -95,8 +96,7 @@ export async function POST(
     const botResponse = String(
       await model
         .call(
-          `Create simple, highly personified sentences WITHOUT any prefixes at ALL. DO NOT use ${bot.name}: prefix.
-          Always look for ways to get your interlocutor thinking outside the box and give them VERY specific advon how to do so.
+          `Create SHORT (within 4 sentences), highly personified, yet complete response WITHOUT any prefixes at ALL. DO NOT use ${bot.name}: prefix. Always look for ways to get your interlocutor thinking creatively and give them VERY specific advon how to do so.
 
           ${bot.preamble}
 
