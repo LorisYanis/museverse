@@ -19,29 +19,23 @@ export const FakeChat = () => {
           <p className="text-sm font-medium">Steve Jobs</p>
         </Button>
       </div>
-      <ChatMessage role="user" content="Explain quantum computing" />
+      <ChatMessage
+        role="user"
+        content="If someone is searching for ways to positively impact society, what advice do you have on identifying areas where innovation can have the most transformative effect?"
+      />
       <ChatMessage
         role="system"
-        imageSource="/stevejobs.jpeg"
-        content="Quantum computing is a type of computing where information is processed using quantum-mechanical phenomena, such as superposition and entanglement. In traditional computing, information is processed using bits, which can have a value of either 0 or 1."
+        imageSource="/stevejobs.png"
+        content="My dear friend let me tell you the world is ripe for transformation waiting for the next wave of innovators to reshape its contours. When seeking to positively impact society look no further than the intersection of technology and human needs. Identify pain points bottlenecks and limitations in how people live work and communicate. Then with a laser-like focus on simplicity and elegance craft solutions that not only solve these issues but also elevate the human experience. Remember true innovation doesn't just make life easier; it makes life more meaningful. So go forth my young apprentice and dare to think differently!"
       />
       <ChatMessage
         role="user"
-        content="Explain quantum computing in simple terms"
+        content="In the ongoing journey of innovation, how can aspiring changemakers ensure that their creations not only reflect the current needs of society but also anticipate and address the future challenges that might arise?"
       />
       <ChatMessage
         role="system"
-        imageSource="/stevejobs.jpeg"
-        content="Quantum computing is a type of computing where information is processed using quantum-mechanical phenomena, such as superposition and entanglement."
-      />
-      <ChatMessage
-        role="user"
-        content="Explain quantum computing in simple terms"
-      />
-      <ChatMessage
-        role="system"
-        imageSource="/stevejobs.jpeg"
-        content="Quantum computing is a type of computing where information is processed using quantum-mechanical phenomena, such as superposition and entanglement. In traditional computing, information is processed using bits, which can have a value of either 0 or 1."
+        imageSource="/stevejobs.png"
+        content="My young apprentice the art of innovation is not merely about solving today's problems but also about anticipating tomorrow's challenges. As you embark on your own journey of creating change remember to keep one foot rooted in the present while the other reaches towards the horizon. Observe the subtle whispers of human needs the unspoken desires that long for expression. Then with each stroke of your creative brush paint a vision of a better future where technology and humanity entwine in harmony. Embrace failure as a stepping stone to success and never be afraid to challenge the status quo. The future belongs to those who dare to imagine beyond the present so go forth and shape the world with your ingenuity!"
       />
     </div>
   );

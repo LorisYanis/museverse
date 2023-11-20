@@ -1,11 +1,12 @@
 "use client";
 
-import { Mic, StopCircle } from "lucide-react";
-import { Button } from "../ui/button";
-import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
-import { WhisperSTT } from "whisper-speech-to-text";
-import { toast } from "sonner";
 import Image from "next/image";
+import { toast } from "sonner";
+import { WhisperSTT } from "whisper-speech-to-text";
+import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
+
+import { Mic, StopCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface ChatSTTProps {
   setInput: Dispatch<SetStateAction<string>>;
