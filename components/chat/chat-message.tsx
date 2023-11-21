@@ -4,12 +4,11 @@ import { cn } from "@/lib/utils";
 import { BotAvatar } from "@/components/avatars/bot-avatar";
 import { UserAvatar } from "@/components/avatars/user-avatar";
 
-export interface ChatMessageProps {
+interface ChatMessageProps {
   role: "system" | "user" | "function" | "assistant";
   isLoading?: boolean;
   content?: string;
   imageSource?: string;
-  id?: string;
 }
 
 export const ChatMessage = ({
@@ -17,7 +16,6 @@ export const ChatMessage = ({
   isLoading,
   content,
   imageSource,
-  id,
 }: ChatMessageProps) => {
   return (
     <div
@@ -35,15 +33,14 @@ export const ChatMessage = ({
           role === "user" && "ml-10",
         )}
       >
-        {isLoading ? (
+        {/* {!content && (
           <div className="chatLoader">
             <span></span>
             <span></span>
             <span></span>
           </div>
-        ) : (
-          content
-        )}
+        )} */}
+        {!!content && content}
       </div>
 
       {role === "user" && <UserAvatar />}

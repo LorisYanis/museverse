@@ -1,24 +1,17 @@
 "use client";
 
-import { uuid } from "uuidv4";
-import { FormEvent, useState } from "react";
 import { Bot, Message } from "@prisma/client";
-import { useChat, useCompletion } from "ai/react";
-import { useRouter } from "next/navigation";
+import { useChat } from "ai/react";
 
 import { ChatInput } from "@/components/chat/chat-input";
 import { ChatHeader } from "@/components/chat/chat-header";
 import { ChatMessages } from "@/components/chat/chat-messages";
-import { ChatMessageProps } from "./chat-message";
-import { Gradient } from "../gradient";
 
 interface ChatProps {
   bot: Bot & { messages: Message[] };
 }
 
 export const Chat = ({ bot }: ChatProps) => {
-  const router = useRouter();
-
   const {
     messages,
     input,
