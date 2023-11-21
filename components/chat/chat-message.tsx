@@ -5,7 +5,7 @@ import { BotAvatar } from "@/components/avatars/bot-avatar";
 import { UserAvatar } from "@/components/avatars/user-avatar";
 
 export interface ChatMessageProps {
-  role: "system" | "user";
+  role: "system" | "user" | "function" | "assistant";
   isLoading?: boolean;
   content?: string;
   imageSource?: string;

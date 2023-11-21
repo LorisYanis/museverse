@@ -2,13 +2,14 @@
 
 import { Bot } from "@prisma/client";
 import { ElementRef, useEffect, useRef } from "react";
+import { Message } from "ai/react";
 
 import { ChatMessage, ChatMessageProps } from "@/components/chat/chat-message";
 
 interface ChatMessagesProps {
   isLoading?: boolean;
   bot: Bot;
-  messages: ChatMessageProps[] | null;
+  messages: Message[] | null;
 }
 
 export const ChatMessages = ({
@@ -33,9 +34,9 @@ export const ChatMessages = ({
         />
       ))}
 
-      {isLoading && (
+      {/* {isLoading && (
         <ChatMessage role="system" isLoading imageSource={bot.imageSource} />
-      )}
+      )} */}
 
       <div ref={lastDivRef} />
     </div>

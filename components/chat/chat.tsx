@@ -3,7 +3,7 @@
 import { uuid } from "uuidv4";
 import { FormEvent, useState } from "react";
 import { Bot, Message } from "@prisma/client";
-import { useCompletion } from "ai/react";
+import { useChat, useCompletion } from "ai/react";
 import { useRouter } from "next/navigation";
 
 import { ChatInput } from "@/components/chat/chat-input";
@@ -18,38 +18,18 @@ interface ChatProps {
 
 export const Chat = ({ bot }: ChatProps) => {
   const router = useRouter();
-  const [messages, setMessages] = useState<ChatMessageProps[]>(bot.messages);
 
-  const { isLoading, input, setInput, handleInputChange, handleSubmit } =
-    useCompletion({
-      api: `/api/bot/chat/${bot.id}`,
-      onFinish(_prompt, completion) {
-        console.log("completion: ", completion);
-
-        const systemMessage: ChatMessageProps = {
-          role: "system",
-          content: completion,
-          id: `message_${uuid()}`,
-        };
-
-        setInput("");
-        setMessages((currentMessages) => [...currentMessages, systemMessage]);
-
-        router.refresh();
-      },
-    });
-
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-    const userMessage: ChatMessageProps = {
-      role: "user",
-      content: input,
-      id: `message_${uuid()}`,
-    };
-
-    setMessages((currentMessages) => [...currentMessages, userMessage]);
-
-    handleSubmit(event);
-  };
+  const {
+    messages,
+    input,
+    handleInputChange,
+    handleSubmit,
+    isLoading,
+    setInput,
+  } = useChat({
+    api: `/api/bot/chat/${bot.id}`,
+    initialMessages: bot.messages,
+  });
 
   return (
     <div className="max-w-3xl flex flex-col h-full m-auto">
@@ -60,7 +40,7 @@ export const Chat = ({ bot }: ChatProps) => {
         input={input}
         setInput={setInput}
         isLoading={isLoading}
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit}
         handleInputChange={handleInputChange}
       />
     </div>
