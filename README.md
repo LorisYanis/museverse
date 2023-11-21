@@ -1,4 +1,4 @@
-# museverse 🪐
+# museverse 🎶
 
 ![banner](./public/README-cover.png)
 
