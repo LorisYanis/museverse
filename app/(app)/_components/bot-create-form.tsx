@@ -249,7 +249,7 @@ export const BotCreateForm = ({
             </Button>
             {currentBotData && (
               <Button
-                variant="outlineOpacity"
+                variant="outline"
                 onClick={(event) => onDelete(event)}
                 disabled={isLoading}
                 className="self-center"
