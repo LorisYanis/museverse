@@ -10,15 +10,21 @@ import { Button } from "@/components/ui/button";
 
 interface ChatSTTProps {
   setInput: Dispatch<SetStateAction<string>>;
+  isRecording: boolean;
+  setIsRecording: Dispatch<SetStateAction<boolean>>;
+  isLoading?: boolean;
 }
 
-export const ChatSTT = ({ setInput }: ChatSTTProps) => {
+export const ChatSTT = ({
+  setInput,
+  isLoading,
+  isRecording,
+  setIsRecording,
+}: ChatSTTProps) => {
   const whisper = useMemo(
     () => new WhisperSTT(process.env.OPENAI_API_KEY || ""),
     [],
   );
-
-  const [isRecording, setIsRecording] = useState(false);
   const [opacity, setOpacity] = useState(1);
   useEffect(() => {
     if (isRecording)
@@ -71,28 +77,29 @@ export const ChatSTT = ({ setInput }: ChatSTTProps) => {
   };
 
   return (
-    <>
-      <Button
-        type="button"
-        variant="outlineOpacity"
-        size="icon"
-        className="transition text-muted-foreground hover:text-foreground"
-        onClick={isRecording ? stopRecordingHandler : startRecordingHandler}
-      >
-        {isRecording ? (
-          <StopCircle className="h-5 w-5" />
-        ) : (
-          <Mic className="h-5 w-5" />
-        )}
-      </Button>
-
-      {/* {isRecording && (
-        <div className="-z-50" style={{ opacity: opacity }}>
-          <div className="fixed h-[100rem] w-[100rem] right-1/2 translate-x-1/2 bottom-0 translate-y-1/2 -z-50">
-            <Image src="/main-gradient.png" fill alt="" quality={100} />
-          </div>
-        </div>
-      )} */}
-    </>
+    <Button
+      type="button"
+      variant="outline"
+      size="icon"
+      className="transition text-muted-foreground hover:text-foreground"
+      onClick={isRecording ? stopRecordingHandler : startRecordingHandler}
+      disabled={isLoading}
+    >
+      {isRecording ? (
+        <StopCircle className="h-5 w-5" />
+      ) : (
+        <Mic className="h-5 w-5" />
+      )}
+    </Button>
   );
+
+  // Gradient
+
+  /* {isRecording && (
+  <div className="-z-50" style={{ opacity: opacity }}>
+    <div className="fixed h-[100rem] w-[100rem] right-1/2 translate-x-1/2 bottom-0 translate-y-1/2 -z-50">
+      <Image src="/main-gradient.png" fill alt="" quality={100} />
+    </div>
+  </div>
+)} */
 };
