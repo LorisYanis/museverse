@@ -27,6 +27,7 @@ export async function POST(req: Request) {
       return new NextResponse("Unauthenticated", { status: 401 });
     }
 
+    // To stop the organization membership checking functionality, comment the lines from 31 to 42
     const memberships =
       await clerkClient.organizations.getOrganizationMembershipList({
         organizationId: process.env.CLERK_ORGANIZATION_ID!,
