@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { ArrowUp } from "lucide-react";
 import { ChangeEvent, Dispatch, FormEvent, SetStateAction } from "react";
 
@@ -26,6 +27,13 @@ export const ChatInput = ({
   onSubmit,
   handleInputChange,
 }: ChatInputProps) => {
+  const ChatSTT = dynamic(
+    () => import("@/components/chat/chat-STT").then((module) => module.ChatSTT),
+    {
+      ssr: false,
+    },
+  );
+
   return (
     <form
       onSubmit={onSubmit}
@@ -37,7 +45,7 @@ export const ChatInput = ({
         placeholder={`Write to ${botName}`}
         disabled={isLoading}
       />
-      {/* <ChatSTT setInput={setInput} /> */}
+      <ChatSTT setInput={setInput} />
       <Button
         type="submit"
         variant="outlineOpacity"
