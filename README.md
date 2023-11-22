@@ -45,14 +45,14 @@ Run the project
 
 ## Tech Stack
 
-- [Next.js](https://nextjs.org/) – Framework
-- [Typescript](https://www.typescriptlang.org/) – Language
-- [Tailwind](https://tailwindcss.com/) – CSS Framework
-- [Clerk](https://clerk.com/) – Auth
-- [Prisma](https://www.prisma.io/) - ORM
-- [PlanetScale](https://planetscale.com/) – MySQL Database
-- [Upstash](https://upstash.com/) – Redis
-- [Pinecone](https://www.pinecone.io/) - Vector Database
-- [OpenAI](https://openai.com/) - Text Generation API
-- [Edge Store](https://edgestore.dev/) - Object Storage
-- [Trunk](https://trunk.io/check) - Code Quality and Security Checking
+- [Next.js](https://nextjs.org/) – Framework 🖼️
+- [Typescript](https://www.typescriptlang.org/) – Language 👅
+- [Tailwind](https://tailwindcss.com/) – CSS Framework 🎨
+- [Clerk](https://clerk.com/) – Auth 🔐
+- [Prisma](https://www.prisma.io/) - ORM 🔺
+- [PlanetScale](https://planetscale.com/) – MySQL Database 📊
+- [Upstash](https://upstash.com/) – Redis 🟥
+- [Pinecone](https://www.pinecone.io/) - Vector Database ⛓️
+- [OpenAI](https://openai.com/) - Text Generation API 💬
+- [Edge Store](https://edgestore.dev/) - Object Storage 💽
+- [Trunk](https://trunk.io/check) - Code Quality and Security Checking 🚔
