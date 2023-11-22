@@ -16,11 +16,25 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "museverse",
   description: "We are creative beings, not productive machines",
+  openGraph: {
+    title: "museverse",
+    description: "We are creative beings, not productive machines",
+    images: [
+      {
+        url: "/README-cover.png",
+        width: 2880,
+        height: 2048,
+        alt: "museverse",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
   icons: {
     icon: [
       {
-        url: "/logo.svg",
-        href: "/logo.svg",
+        url: "/logo-favicon.svg",
+        href: "/logo-favicon.svg",
       },
     ],
   },
