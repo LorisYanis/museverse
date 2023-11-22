@@ -8,6 +8,11 @@ In our contemporary world, we have tons of methods to induce unearthly productiv
 
 museverse is where you can find like-minded, knowledgeable chatbots of famous, incredibly creative people and have profound conversations with them to ignite unceasable flows of creativity.
 
+## System Requirements
+
+- [`node.js`](https://nodejs.org/) >= 20
+- [`npm`](https://www.npmjs.com/) >= 10.1.0
+
 ## Getting Started
 
 Clone repository
