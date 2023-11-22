@@ -60,7 +60,7 @@ export const ChatInput = ({
           type="button"
           variant="outline"
           size="icon"
-          className="absolute top-0 right-0 transition text-muted-foreground hover:text-foreground"
+          className="absolute -z-[1] top-0 right-0 transition text-muted-foreground hover:text-foreground"
           disabled={isLoading}
         >
           {isRecording ? (

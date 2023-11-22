@@ -46,7 +46,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <EdgeStoreProvider>
-              <Toaster position="bottom-center" />
+              <Toaster position="bottom-center" theme="dark" />
               {children}
               <Gradient />
             </EdgeStoreProvider>
