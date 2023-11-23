@@ -25,7 +25,7 @@ export const Header = ({ isLanding }: HeaderProps) => {
     >
       <Link href={isLanding ? "/" : "/app"} className="flex flex-row gap-2">
         <Image src="/logo.svg" height="24" width="24" alt="logo" />
-        <span className="hidden md:block font-bold">museverse.ai</span>
+        <span className="hidden md:block font-bold">museverse</span>
       </Link>
       <div className="flex flex-row gap-x-2">
         {isLanding && (
