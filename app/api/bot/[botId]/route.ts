@@ -30,6 +30,7 @@ export async function PATCH(
       return new NextResponse("Unauthenticated", { status: 401 });
     }
 
+    // To stop the organization membership checking functionality, comment the lines from 34 to 45
     const memberships =
       await clerkClient.organizations.getOrganizationMembershipList({
         organizationId: process.env.CLERK_ORGANIZATION_ID!,
@@ -76,6 +77,7 @@ export async function DELETE(
       return new NextResponse("Unauthenticated", { status: 401 });
     }
 
+    // To stop the organization membership checking functionality, comment the lines from 81 to 92
     const memberships =
       await clerkClient.organizations.getOrganizationMembershipList({
         organizationId: process.env.CLERK_ORGANIZATION_ID!,

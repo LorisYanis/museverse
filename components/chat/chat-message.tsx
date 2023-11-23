@@ -18,32 +18,29 @@ export const ChatMessage = ({
   imageSource,
 }: ChatMessageProps) => {
   return (
-    <div
-      className={cn(
-        "flex flex-row flex-start gap-x-2 w-full",
-        role === "user" && "justify-end",
-      )}
-    >
-      {role !== "user" && <BotAvatar imageSource={imageSource} />}
+    <>
+      {content && (
+        <div
+          className={cn(
+            "flex flex-row flex-start gap-x-2 w-full",
+            role === "user" && "justify-end",
+          )}
+        >
+          {role !== "user" && <BotAvatar imageSource={imageSource} />}
 
-      <div
-        className={cn(
-          "rounded-lg break-words p-3 bg-background/50 backdrop-blur border-[1px] border-muted max-w-sm md:max-w-lg text-xs md:text-sm",
-          role !== "user" && "mr-10",
-          role === "user" && "ml-10",
-        )}
-      >
-        {/* {!content && (
-          <div className="chatLoader">
-            <span></span>
-            <span></span>
-            <span></span>
+          <div
+            className={cn(
+              "rounded-lg break-words p-3 bg-background/50 backdrop-blur border-[1px] border-muted max-w-sm md:max-w-lg text-xs md:text-sm",
+              role !== "user" && "mr-10",
+              role === "user" && "ml-10",
+            )}
+          >
+            {content}
           </div>
-        )} */}
-        {!!content && content}
-      </div>
 
-      {role === "user" && <UserAvatar />}
-    </div>
+          {role === "user" && <UserAvatar />}
+        </div>
+      )}
+    </>
   );
 };

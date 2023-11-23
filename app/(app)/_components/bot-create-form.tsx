@@ -87,7 +87,12 @@ export const BotCreateForm = ({
         await axios.patch(`/api/bot/${currentBotData.id}`, values);
         toast.success("Bot updated!");
       }
-    } catch (error) {
+    } catch (error: any) {
+      if (error.response.data) {
+        toast.error(error.response.data);
+        return null;
+      }
+
       toast.error("Something went wrong");
       return null;
     }
@@ -249,7 +254,7 @@ export const BotCreateForm = ({
             </Button>
             {currentBotData && (
               <Button
-                variant="outlineOpacity"
+                variant="outline"
                 onClick={(event) => onDelete(event)}
                 disabled={isLoading}
                 className="self-center"
