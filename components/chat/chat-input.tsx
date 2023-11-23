@@ -40,7 +40,7 @@ export const ChatInput = ({
     },
   );
 
-  const [isRecording, setIsRecording] = useState<boolean>(false);
+  const [falseIsRecording, setFalseIsRecording] = useState<boolean>(false);
 
   return (
     <form
@@ -63,7 +63,7 @@ export const ChatInput = ({
           className="absolute -z-[1] top-0 right-0 transition text-muted-foreground hover:text-foreground"
           disabled={isLoading}
         >
-          {isRecording ? (
+          {falseIsRecording ? (
             <StopCircle className="h-5 w-5" />
           ) : (
             <Mic className="h-5 w-5" />
@@ -72,8 +72,7 @@ export const ChatInput = ({
         <ChatSTT
           setInput={setInput}
           isLoading={isLoading}
-          isRecording={isRecording}
-          setIsRecording={setIsRecording}
+          setFalseIsRecording={setFalseIsRecording}
         />
       </div>
       <div className="relative w-10 h-10">
