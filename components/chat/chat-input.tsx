@@ -5,7 +5,7 @@ import { ChangeEvent, Dispatch, FormEvent, SetStateAction } from "react";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-// import { ChatSTT } from "@/components/chat/chat-STT";
+import { ChatSTT } from "@/components/chat/chat-STT";
 
 interface ChatInputProps {
   botName: string;
@@ -37,7 +37,7 @@ export const ChatInput = ({
         placeholder={`Write to ${botName}`}
         disabled={isLoading}
       />
-      {/* <ChatSTT setInput={setInput} /> */}
+      <ChatSTT setInput={setInput} />
       <Button
         type="submit"
         variant="outlineOpacity"

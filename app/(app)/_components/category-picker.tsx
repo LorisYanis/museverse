@@ -37,7 +37,7 @@ export const CategoryPicker = ({ categories }: CategoryPickerProps) => {
   };
 
   return (
-    <nav className="max-md:scroll-bar w-fit max-md:w-full mt-4 mb-10 max-md:mx-2.5 border border-input bg-background/50 backdrop-blur p-1 rounded-lg">
+    <nav className="max-md:scroll-bar w-fit max-md:w-[calc(100vw-4rem)] mt-4 mb-10 border border-input bg-background/50 backdrop-blur p-1 rounded-lg">
       <div className="flex space-x-2 font-medium text-sm whitespace-nowrap overflow-x-auto">
         <Button
           onClick={() => onCategory(undefined)}
