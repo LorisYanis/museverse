@@ -31,7 +31,7 @@ export const Header = ({ isLanding }: HeaderProps) => {
         {isLanding && (
           <SignIn
             authenticatedText="Go to app"
-            unauthenticatedText="Get museverse.ai Free"
+            unauthenticatedText="Get museverse for free"
             variant="ghost"
           />
         )}
