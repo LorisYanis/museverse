@@ -28,17 +28,14 @@ export const BotSearch = () => {
       botName: debouncedValue,
     };
 
-    let route = "";
+    const route = queryString.stringifyUrl(
+      {
+        url: "/app",
+        query,
+      },
+      { skipEmptyString: true, skipNull: true },
+    );
 
-    if (typeof window !== undefined) {
-      route = queryString.stringifyUrl(
-        {
-          url: window.location.href,
-          query,
-        },
-        { skipEmptyString: true, skipNull: true },
-      );
-    }
     router.push(route);
   }, [debouncedValue, categoryId, router]);
 

@@ -26,7 +26,7 @@ export const Chat = ({ bot }: ChatProps) => {
 
   return (
     <div className="max-w-3xl flex flex-col h-full m-auto">
-      <ChatHeader botImageSource={bot.imageSource} botName={bot.name} />
+      <ChatHeader botName={bot.name} />
       <ChatMessages isLoading={isLoading} bot={bot} messages={messages} />
       <ChatInput
         botName={bot.name}
