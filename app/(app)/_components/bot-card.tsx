@@ -43,7 +43,11 @@ export const BotCard = ({ bot }: BotCardProps) => {
       <CardFooter className="p-0">
         <Button asChild>
           <Link
-            href={`/chat/${bot.id}?categoryId=${categoryId}`}
+            href={
+              categoryId
+                ? `/chat/${bot.id}?categoryId=${categoryId}`
+                : `/chat/${bot.id}`
+            }
             className="text-sm font-medium text-center block w-full"
           >
             Enter Chat <ArrowUpRight className="ml-1 w-5 h-5" />
