@@ -29,6 +29,7 @@ export const ChatHeader = ({ botName }: ChatHeaderProps) => {
       },
       { skipEmptyString: true, skipNull: true },
     );
+
     router.push(route);
   };
 
